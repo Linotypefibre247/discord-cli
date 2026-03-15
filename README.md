@@ -88,6 +88,8 @@ Add to your `mcp.json`:
 | `send_message` | Send a message to a channel | ❌ |
 | `sync_channel` | Sync a channel's history | ❌ |
 
+- You can optionally add `send_message` and `sync_channel` to the `autoApprove` array in your `mcp.json` if you want your AI agent to use them without confirmation. They're excluded by default since they perform write operations.
+
 ## How It Works
 
 - Messages are synced from Discord into a local SQLite database with FTS5 full-text search
@@ -109,6 +111,13 @@ Add to your `mcp.json`:
 
 1. Open Discord in browser
 2. DevTools → Network → any API request → Authorization header
+
+> ⚠️ **Important:** Bot tokens are always the safer choice. User tokens violate Discord's Terms of Service if used for automation at scale. They're fine for personal/local use and AI agents acting on your behalf, but bot tokens are more stable, officially supported, and won't risk your account. When in doubt, use a bot token.
+
+## Inspired By
+
+- [steipete/wacli](https://github.com/steipete/wacli) — WhatsApp CLI by Peter Steinberger
+- [virat-mankali/telegram-cli](https://github.com/virat-mankali/telegram-cli) — Telegram CLI
 
 ## License
 
