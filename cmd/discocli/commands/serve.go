@@ -1,9 +1,8 @@
 package commands
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
+	"github.com/virat-mankali/discord-cli/internal/mcp"
 )
 
 var serveCmd = &cobra.Command{
@@ -18,14 +17,14 @@ Add this to your mcp.json:
     "args": ["serve"],
     "env": {},
     "disabled": false,
-    "autoApprove": []
+    "autoApprove": ["search_messages", "list_guilds", "list_channels", "get_sync_status"]
   }
+
+Available tools: search_messages, send_message, list_guilds, list_channels, sync_channel, get_sync_status
 
 The token from ~/.discocli/token is used automatically.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		// MCP server implementation will be wired in Phase 4
-		fmt.Println("MCP server not yet implemented — coming in Phase 4")
-		return nil
+		return mcp.Serve(resolvedStore())
 	},
 }
 
